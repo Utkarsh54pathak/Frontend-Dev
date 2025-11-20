@@ -1,0 +1,20 @@
+{
+    "login" : [
+        {
+            "email" : "user@gmail.com",
+            "password" : "asc234rdf"
+        }
+    ],
+    "sign-up" : [
+        {
+            "fullName" : "Jon Doe",
+            "email" : "",
+            "phone" : "",
+            "gender" : "",
+            "country" : "",
+            "password" : "",
+            "T&C" : ""
+                }
+    ]
+}
+

@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #cce7ff; /* Light blue background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Outer container box */
+.container {
+  display: flex;
+  width: 98%;
+  height: 98%;
+  border: 3px solid #003366;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  background-color: white;
+  position: relative; /* Needed for circle placement */
+}
+
+
+/* Sidebar */
+.w3-sidebar {
+  background-color: #003366; /* Dark blue */
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center links */
+  align-items: center;
+}
+
+/* Sidebar link styles */
+.w3-bar-item {
+  display: block;
+  color: white;
+  padding: 12px 24px;
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+}
+
+.w3-bar-item:hover {
+  background-color: #0059b3; /* Lighter blue hover */
+}
+
+/* Main content */
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: #e6f2ff; /* Light blue for content */
+}

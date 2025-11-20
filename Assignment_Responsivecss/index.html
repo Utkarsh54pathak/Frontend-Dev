@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive CSS Cheat Sheet</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header>
+<h1>Responsive CSS Cheat Sheet</h1>
+<p>Quick reference for filters, media queries, responsive web design, and
+typography.</p>
+</header>
+<main>
+<section>
+<h2>1. CSS Filters</h2>
+<table>
+<thead>
+<tr><th>Property</th><th>Description</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td data-label="Property">blur()</td><td
+data-label="Description">Applies a blur effect.</td><td
+data-label="Example">filter: blur(5px);</td></tr>
+<tr><td data-label="Property">brightness()</td><td
+data-label="Description">Adjusts brightness.</td><td
+data-label="Example">filter: brightness(1.2);</td></tr>
+<tr><td data-label="Property">contrast()</td><td
+data-label="Description">Adjusts contrast level.</td><td
+data-label="Example">filter: contrast(200%);</td></tr>
+<tr><td data-label="Property">grayscale()</td><td
+data-label="Description">Converts to grayscale.</td><td
+data-label="Example">filter: grayscale(100%);</td></tr>
+<tr><td data-label="Property">hue-rotate()</td><td
+data-label="Description">Rotates hue color.</td><td
+data-label="Example">filter: hue-rotate(90deg);</td></tr>
+<tr><td data-label="Property">invert()</td><td
+data-label="Description">Inverts colors.</td><td data-label="Example">filter:
+invert(100%);</td></tr>
+<tr><td data-label="Property">opacity()</td><td
+    data-label="Description">Adjusts transparency.</td><td
+data-label="Example">filter: opacity(0.5);</td></tr>
+<tr><td data-label="Property">saturate()</td><td
+data-label="Description">Increases color intensity.</td><td
+data-label="Example">filter: saturate(2);</td></tr>
+<tr><td data-label="Property">sepia()</td><td
+data-label="Description">Applies sepia tone.</td><td
+data-label="Example">filter: sepia(100%);</td></tr>
+<tr><td data-label="Property">drop-shadow()</td><td
+data-label="Description">Adds a shadow effect.</td><td
+data-label="Example">filter: drop-shadow(5px 5px 10px gray);</td></tr>
+</tbody>
+</table>
+</section>
+<section>
+<h2>2. Responsive Web Design</h2>
+<table>
+<thead>
+<tr><th>Technique</th><th>Description</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td data-label="Technique">Fluid Layout</td><td
+data-label="Description">Uses percentage-based widths.</td><td
+data-label="Example">width: 80%;</td></tr>
+<tr><td data-label="Technique">Flexible Images</td><td
+data-label="Description">Images resize within containers.</td><td
+data-label="Example">img { max-width: 100%; height: auto; }</td></tr>
+<tr><td data-label="Technique">Viewport Meta Tag</td><td
+data-label="Description">Adapts layout to device width.</td><td
+data-label="Example">&lt;meta name="viewport" content="width=device-width,
+initial-scale=1.0"&gt;</td></tr>
+<tr><td data-label="Technique">Mobile-First</td><td
+data-label="Description">Design for smaller screens first.</td><td
+data-label="Example">Start with base CSS, then add queries.</td></tr>
+<tr><td data-label="Technique">Breakpoints</td><td
+data-label="Description">Change layout at specific widths.</td><td
+data-label="Example">@media (max-width: 768px) { ... }</td></tr>
+</tbody>
+</table>
+</section>
+<section>
+<h2>3. CSS Media Queries</h2>
+<table>
+
+<thead>
+<tr><th>Query</th><th>Applies When</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td data-label="Query">@media (max-width: 1200px)</td><td
+data-label="Applies When">Desktop to tablet.</td><td
+data-label="Example">Adjust large screens.</td></tr>
+<tr><td data-label="Query">@media (max-width: 992px)</td><td
+data-label="Applies When">Tablet landscape.</td><td data-label="Example">Stack
+elements.</td></tr>
+<tr><td data-label="Query">@media (max-width: 768px)</td><td
+data-label="Applies When">Tablet portrait.</td><td data-label="Example">Change
+layout.</td></tr>
+<tr><td data-label="Query">@media (max-width: 576px)</td><td
+data-label="Applies When">Mobile phones.</td><td data-label="Example">Adjust
+text & images.</td></tr>
+<tr><td data-label="Query">@media (orientation: landscape)</td><td
+data-label="Applies When">Landscape mode.</td><td data-label="Example">body {
+flex-direction: row; }</td></tr>
+</tbody>
+</table>
+</section>
+<section>
+<h2>4. Responsive Typography</h2>
+<table>
+<thead>
+<tr><th>Technique</th><th>Description</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td data-label="Technique">vw Units</td><td
+data-label="Description">Scales text with viewport width.</td><td
+data-label="Example">font-size: 2vw;</td></tr>
+<tr><td data-label="Technique">Clamp()</td><td
+data-label="Description">Sets flexible min and max sizes.</td><td
+data-label="Example">font-size: clamp(1rem, 2vw, 2rem);</td></tr>
+<tr><td data-label="Technique">Media Queries</td><td
+data-label="Description">Adjusts font size by screen size.</td><td
+data-label="Example">@media (max-width: 600px) { h1 { font-size: 1.5rem; }
+}</td></tr>
+</tbody>
+</table>
+</section>
+<section>
+
+<h2>5. Common Breakpoints</h2>
+<table>
+<thead>
+<tr><th>Device</th><th>Breakpoint</th><th>Usage</th></tr>
+</thead>
+<tbody>
+<tr><td data-label="Device">Small phones</td><td
+data-label="Breakpoint">max-width: 480px</td><td data-label="Usage">Mobile
+layout</td></tr>
+<tr><td data-label="Device">Large phones</td><td
+data-label="Breakpoint">max-width: 576px</td><td data-label="Usage">Adjust nav
+& text</td></tr>
+<tr><td data-label="Device">Tablets</td><td
+data-label="Breakpoint">max-width: 768px</td><td data-label="Usage">Stack grid
+elements</td></tr>
+<tr><td data-label="Device">Laptops</td><td
+data-label="Breakpoint">max-width: 992px</td><td data-label="Usage">Adjust
+columns</td></tr>
+<tr><td data-label="Device">Desktops</td><td
+data-label="Breakpoint">max-width: 1200px</td><td data-label="Usage">Standard
+screen</td></tr>
+</tbody>
+</table>
+</section>
+</main>
+<footer>
+<p>Responsive CSS Cheat Sheet (c) 2025</p>
+</footer>
+</body>
+</html>

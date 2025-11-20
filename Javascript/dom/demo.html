@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DOM Todo App</title>
+<style>
+#outer {
+border: 2px solid blue;
+padding: 20px;
+width: 350px;
+}
+li {
+margin: 8px 0;
+padding: 6px;
+background: #a63b3b;
+display: flex;
+justify-content: space-between;
+}
+</style>
+</head>
+<body>
+<div id="outer">
+<h2>Todo App</h2>
+<form id="todoForm">
+<input type="text" id="todoInput" placeholder="Enter Task..." />
+<button type="submit" id="addBtn">Add</button>
+</form>
+<ul id="todoList"></ul>
+</div>
+<script>
+const form = document.getElementById("todoForm");
+const input = document.querySelector("#todoInput");
+const list = document.getElementById("todoList");
+const outerBox = document.getElementById("outer");
+form.addEventListener("submit", function (e) {
+e.preventDefault();
+if (input.value.trim() === "") return;
+const li = document.createElement("li"); const textNode =
+
+document.createTextNode(input.value); const delBtn =
+document.createElement("button");
+delBtn.setAttribute("class", "delete-btn");
+delBtn.textContent = "Delete";
+li.appendChild(textNode);
+li.appendChild(delBtn);
+list.append(li);
+input.value = "";
+});
+list.addEventListener("click", function (e) {
+console.log("Event Target:", e.target);
+console.log("Event Type:", e.type);
+console.log("Mouse Position:", e.clientX, e.clientY);
+if (e.target.classList.contains("delete-btn")) {
+e.target.parentElement.remove();
+}
+});
+outerBox.addEventListener("click", function () {
+console.log("Outer DIV clicked (Bubbling Phase)");
+});
+outerBox.addEventListener(
+"click",
+function () {
+console.log("Outer DIV clicked (Capturing Phase)");
+},
+true
+);
+input.addEventListener("click", function (e) {
+e.stopPropagation();
+console.log("Input clicked -- Bubbling stopped!");
+});
+</script>
+</body>
+</html>
