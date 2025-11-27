@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Status Dashboard</title>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+
+        .emp-row {
+            border: 1px solid #aaa;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 350px;
+        }
+
+        .status-active { color: green; font-weight: bold; }
+        .status-inactive { color: red; font-weight: bold; }
+
+        .error-msg {
+            color: red;
+            font-weight: bold;
+            display: none;
+            margin-top: 15px;
+        }
+        button { padding: 6px 14px; }
+    </style>
+</head>
+
+<body>
+
+<h2>Employee Status Dashboard</h2>
+
+<div id="employeeList"></div>
+<p id="error" class="error-msg">❌ Failed to update status. Please try again.</p>
+
+<script>
+function loadEmployees() {
+    const request = new XMLHttpRequest();
+
+    request.open("GET", "http://localhost:3002/employees");
+    request.send();
+
+    request.onload = function () {
+        if (request.status === 200) {
+            const employees = JSON.parse(request.responseText);
+            displayEmployees(employees);
+        } else {
+            alert("Error loading employees.");
+        }
+    };
+}
+
+loadEmployees();
+
+function displayEmployees(list) {
+    const container = document.getElementById("employeeList");
+    container.innerHTML = "";
+
+    list.forEach(emp => {
+        const row = document.createElement("div");
+        row.classList.add("emp-row");
+
+        row.innerHTML = `
+            <div>
+                <strong>${emp.name}</strong><br>
+                <span class="status ${emp.status === 'active' ? 'status-active' : 'status-inactive'}">
+                    ${emp.status.toUpperCase()}
+                </span>
+            </div>
+
+            <button class="toggleBtn" data-id="${emp.id}" data-status="${emp.status}">
+                Toggle
+            </button>
+        `;
+
+        container.appendChild(row);
+    });
+
+    attachToggleEvents();
+}
+
+function attachToggleEvents() {
+    const buttons = document.querySelectorAll(".toggleBtn");
+
+    buttons.forEach(btn => {
+
+        btn.addEventListener("click", function () {
+            const id = this.dataset.id;
+            const currentStatus = this.dataset.status;
+
+            const newStatus = currentStatus === "active" ? "inactive" : "active";
+            const statusText = this.parentElement.querySelector(".status");
+            const oldUIState = statusText.textContent;
+
+            statusText.textContent = newStatus.toUpperCase();
+            statusText.className = "status " + (newStatus === "active" ? "status-active" : "status-inactive");
+
+            this.dataset.status = newStatus;
+
+            sendPatchRequest(id, newStatus, statusText, oldUIState, this);
+        });
+
+    });
+}
+function sendPatchRequest(id, newStatus, statusElement, oldText, button) {
+
+    const request = new XMLHttpRequest();
+    request.open("PATCH", `http://localhost:3002/employees/${id}`);
+    request.setRequestHeader("Content-Type", "application/json");
+
+    request.onload = function () {
+        if (request.status !== 200) {
+            statusElement.textContent = oldText;
+            statusElement.className = "status " + (oldText === "ACTIVE" ? "status-active" : "status-inactive");
+
+            button.dataset.status = oldText.toLowerCase();
+
+            document.getElementById("error").style.display = "block";
+        }
+    };
+
+    request.onerror = function () {
+        statusElement.textContent = oldText;
+        statusElement.className = "status " + (oldText === "ACTIVE" ? "status-active" : "status-inactive");
+
+        button.dataset.status = oldText.toLowerCase();
+
+        document.getElementById("error").style.display = "block";
+    };
+
+    request.send(JSON.stringify({ status: newStatus }));
+}
+
+</script>
+
+</body>
+</html>

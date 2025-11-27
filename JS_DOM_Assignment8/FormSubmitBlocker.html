@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Submit Blocker</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        form { width: 300px; }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            display: none;
+            margin-top: 3px;
+        }
+
+        #successMsg {
+            color: green;
+            font-weight: bold;
+            margin-top: 15px;
+            display: none;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 8px 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Form Validation</h2>
+    <form id="myForm">
+
+        <label>Name</label>
+        <input type="text" id="name">
+        <div id="nameErr" class="error">Name is required.</div>
+
+        <label>Email</label>
+        <input type="text" id="email">
+        <div id="emailErr" class="error">Enter a valid email.</div>
+
+        <label>Password</label>
+        <input type="password" id="password">
+        <div id="passErr" class="error">Password must be at least 6 characters.</div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="successMsg">Form Submitted Successfully ✔</p>
+
+    <script>
+        const form = document.getElementById("myForm");
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const passInput = document.getElementById("password");
+        const nameErr = document.getElementById("nameErr");
+        const emailErr = document.getElementById("emailErr");
+        const passErr = document.getElementById("passErr");
+        const successMsg = document.getElementById("successMsg");
+        function validateForm(event) {
+            event.preventDefault();
+        
+            let valid = true;
+        
+            if (nameInput.value.trim() === "") {
+                nameErr.style.display = "block";
+                valid = false;
+            }
+        
+            if (!emailInput.value.includes("@")) {
+                emailErr.style.display = "block";
+                valid = false;
+            }
+        
+            if (passInput.value.length < 6) {
+                passErr.style.display = "block";
+                valid = false;
+            }
+        
+            if (valid) {
+                successMsg.style.display = "block";
+            }
+        }
+
+        form.addEventListener("submit", validateForm);
+
+        nameInput.addEventListener("input", () => nameErr.style.display = "none");
+        emailInput.addEventListener("input", () => emailErr.style.display = "none");
+        passInput.addEventListener("input", () => passErr.style.display = "none");
+
+    </script>
+
+</body>
+</html>

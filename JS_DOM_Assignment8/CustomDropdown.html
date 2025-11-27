@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Custom Dropdown</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-btn {
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .dropdown-list {
+            position: absolute;
+            top: 45px;
+            left: 0;
+            width: 150px;
+            border: 1px solid #ccc;
+            background: white;
+            display: none;
+            border-radius: 5px;
+        }
+
+        .dropdown-list div {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .dropdown-list div:hover {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Custom Dropdown (No &lt;select&gt; tag)</h2>
+
+    <div class="dropdown" id="dropdown">
+        <button class="dropdown-btn" id="dropBtn">Select Option</button>
+
+        <div class="dropdown-list" id="dropList">
+            <div data-value="Option 1">Option 1</div>
+            <div data-value="Option 2">Option 2</div>
+            <div data-value="Option 3">Option 3</div>
+        </div>
+    </div>
+
+    <script>
+        const dropBtn = document.getElementById("dropBtn");
+        const dropList = document.getElementById("dropList");
+        const dropdown = document.getElementById("dropdown");
+        
+        dropBtn.addEventListener("click", () => {
+            dropList.style.display = dropList.style.display === "block" ? "none" : "block";
+        });
+
+        dropList.addEventListener("click", (event) => {
+            if (event.target.dataset.value) {
+                dropBtn.textContent = event.target.dataset.value;
+                dropList.style.display = "none";
+            }
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!dropdown.contains(event.target)) {
+                dropList.style.display = "none";
+            }
+        }, true); 
+    </script>
+
+</body>
+</html>

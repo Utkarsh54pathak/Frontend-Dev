@@ -1,0 +1,17 @@
+{
+  "users": [
+    { "id": 1, "name": "Shiv" },
+    { "id": 2, "name": "Aman" },
+    { "id": 3, "name": "Riya" }
+  ],
+  "orders": [
+    { "id": 1, "amount": 450 },
+    { "id": 2, "amount": 900 },
+    { "id": 3, "amount": 150 }
+  ],
+  "products": [
+    { "id": 1, "name": "Laptop" },
+    { "id": 2, "name": "Mouse" },
+    { "id": 3, "name": "Keyboard" }
+  ]
+}

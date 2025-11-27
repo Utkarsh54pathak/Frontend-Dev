@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Search - Products</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+
+        #search {
+            width: 300px;
+            padding: 8px;
+        }
+
+        #loading {
+            display: none;
+            margin-top: 10px;
+            font-weight: bold;
+            color: blue;
+        }
+
+        .product {
+            border: 1px solid #aaa;
+            padding: 10px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-radius: 8px;
+        }
+
+        .product img {
+            border-radius: 5px;
+        }
+
+        #noResult {
+            margin-top: 15px;
+            color: red;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Live Search Products</h2>
+
+<input type="text" id="search" placeholder="Search products...">
+
+<div id="loading">Loading...</div>
+<div id="noResult">No products found</div>
+
+<div id="results"></div>
+
+<script>
+$(document).ready(function () {
+
+    $("#search").on("keyup", function () {
+
+        let value = $(this).val().trim();
+        $("#results").empty();
+        $("#noResult").hide();
+
+        if (value.length === 0) return;
+
+        $("#loading").show();
+
+        $.ajax({
+            url: "http://localhost:3001/products?q=" + value,
+            method: "GET",
+
+            success: function (data) {
+                $("#loading").hide();
+
+                if (data.length === 0) {
+                    $("#noResult").show();
+                    return;
+                }
+
+                data.forEach(p => {
+                    $("#results").append(`
+                        <div class="product">
+                            <img src="${p.image}" width="80">
+                            <div>
+                                <h3>${p.name}</h3>
+                                <p>Price: ₹${p.price}</p>
+                            </div>
+                        </div>
+                    `);
+                });
+            },
+
+            error: function () {
+                $("#loading").hide();
+                alert("Error fetching data!");
+            }
+        });
+
+    });
+
+});
+</script>
+
+</body>
+</html>

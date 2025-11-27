@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Character Counter</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        #counter {
+            font-weight: bold;
+            margin-top: 8px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h2>Live Character Counter</h2>
+
+    <textarea id="textBox" rows="5" cols="40" placeholder="Type here..."></textarea>
+    <span id="counter">100 characters left</span>
+
+    <br><br>
+    <button id="resetBtn">Reset</button>
+
+    <script>
+        const textBox = document.getElementById("textBox");
+        const counter = document.getElementById("counter");
+        const resetBtn = document.getElementById("resetBtn");
+
+        const MAX_LIMIT = 100;
+
+        textBox.addEventListener("input", () => {
+            let length = textBox.value.length;
+            let remaining = MAX_LIMIT - length;
+        
+            counter.textContent = `${remaining} characters left`;
+        
+            if (remaining <= 0) {
+                counter.style.color = "red";
+            } else if (remaining <= 20) {
+                counter.style.color = "orange";
+            } else {
+                counter.style.color = "black";
+            }
+        });
+
+        textBox.addEventListener("keypress", (event) => {
+            if (textBox.value.length >= MAX_LIMIT) {
+                event.preventDefault(); 
+            }
+        });
+
+        resetBtn.addEventListener("click", () => {
+            textBox.value = "";
+            counter.textContent = "100 characters left";
+            counter.style.color = "black";
+        });
+    </script>
+
+</body>
+</html>

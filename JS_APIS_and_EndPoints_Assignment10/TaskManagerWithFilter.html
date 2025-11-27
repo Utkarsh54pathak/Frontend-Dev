@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager With Filters</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+
+        #taskList .task {
+            border: 1px solid #888;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 400px;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: green;
+        }
+
+        select, input {
+            padding: 7px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Task Manager</h2>
+
+<label><strong>Filter Tasks:</strong></label>
+<select id="filter">
+    <option value="">All</option>
+    <option value="low">Low Priority</option>
+    <option value="medium">Medium Priority</option>
+    <option value="high">High Priority</option>
+    <option value="completed">Completed Tasks</option>
+</select>
+
+<div id="taskList"></div>
+
+<script>
+$(document).ready(function () {
+
+    function loadTasks(filter = "") {
+
+        let url = "http://localhost:3003/tasks";
+        if (filter === "completed") {
+            url += "?completed=true";
+        } else if (filter !== "") {
+            url += "?priority=" + filter;
+        }
+
+        $.ajax({
+            url: url,
+            method: "GET",
+
+            success: function (tasks) {
+                displayTasks(tasks);
+            },
+
+            error: function () {
+                alert("Failed to load tasks");
+            }
+        });
+    }
+
+    loadTasks();
+
+    function displayTasks(tasks) {
+        $("#taskList").empty();
+
+        tasks.forEach(task => {
+            $("#taskList").append(`
+                <div class="task ${task.completed ? "completed" : ""}">
+                    <div>
+                        <strong>${task.title}</strong><br>
+                        Priority: ${task.priority}
+                    </div>
+
+                    <input type="checkbox" class="toggleComplete" 
+                        data-id="${task.id}" ${task.completed ? "checked" : ""}>
+                </div>
+            `);
+        });
+        attachToggleHandler();
+    }
+
+    $("#filter").on("change", function () {
+        let value = $(this).val();
+        loadTasks(value);
+    });
+
+    function attachToggleHandler() {
+
+        $(".toggleComplete").on("change", function () {
+            let id = $(this).data("id");
+            let newValue = $(this).is(":checked");
+
+            $.ajax({
+                url: `http://localhost:3003/tasks/${id}`,
+                method: "PATCH",
+                data: JSON.stringify({ completed: newValue }),
+                contentType: "application/json",
+
+                success: () => {
+                    $(this).closest(".task").toggleClass("completed", newValue);
+                },
+
+                error: () => {
+                    alert("Failed to update task");
+
+                    $(this).prop("checked", !newValue);
+                }
+            });
+        });
+    }
+});
+</script>
+
+</body>
+</html>

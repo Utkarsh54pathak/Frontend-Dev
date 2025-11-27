@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>College Timetable Viewer</title>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+
+        select {
+            padding: 8px;
+            margin-bottom: 20px;
+        }
+
+        .class-item {
+            border: 2px solid #ccc;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            width: 350px;
+        }
+
+        #message {
+            font-weight: bold;
+            color: red;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>College Timetable Viewer</h2>
+
+<label><strong>Select Day:</strong></label><br>
+<select id="daySelect">
+    <option value="Monday">Monday</option>
+    <option value="Tuesday">Tuesday</option>
+    <option value="Wednesday">Wednesday</option>
+    <option value="Thursday">Thursday</option>
+    <option value="Friday">Friday</option>
+    <option value="Saturday">Saturday</option>
+    <option value="Sunday">Sunday</option>
+</select>
+
+<div id="timetableList"></div>
+<p id="message"></p>
+
+<script>
+document.getElementById("daySelect").addEventListener("change", loadTimetable);
+
+loadTimetable();
+
+function loadTimetable() {
+    const day = document.getElementById("daySelect").value;
+
+    fetch(`http://localhost:3005/timetable?day=${day}`)
+        .then(res => res.json())
+        .then(data => renderTimetable(data))
+        .catch(() => {
+            document.getElementById("message").textContent = "Error loading data.";
+        });
+}
+function renderTimetable(classes) {
+    const list = document.getElementById("timetableList");
+    const msg = document.getElementById("message");
+
+    list.innerHTML = "";
+    msg.textContent = "";
+
+    if (classes.length === 0) {
+        msg.textContent = "No classes today.";
+        return;
+    }
+
+    classes.forEach(item => {
+        list.innerHTML += `
+            <div class="class-item">
+                <strong>Subject:</strong> ${item.subject}<br>
+                <strong>Faculty:</strong> ${item.faculty}<br>
+                <strong>Time:</strong> ${item.time}
+            </div>
+        `;
+    });
+}
+</script>
+
+</body>
+</html>

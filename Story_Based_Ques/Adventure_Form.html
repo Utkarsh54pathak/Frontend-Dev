@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <style>
+            body {
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                flex-direction: column;
+                height: 100vh;
+                background-color: #bde5d2;
+                font-family: 'Poppins', sans-serif;
+                background-image: url('https://media.istockphoto.com/id/1550071750/photo/green-tea-tree-leaves-camellia-sinensis-in-organic-farm-sunlight-fresh-young-tender-bud.jpg?s=612x612&w=0&k=20&c=RC_xD5DY5qPH_hpqeOY1g1pM6bJgGJSssWYjVIvvoLw=');
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        
+            .box {
+                background-color: #fff;
+                box-shadow: 0 0 10px rgba(36, 67, 40, 0.8);
+                padding: 15px;
+                border-radius: 8px;
+                width: 500px;
+                height:500px;
+            }
+        
+            form {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        
+            .radio-group {
+                display: flex;
+            }
+        
+            input[type="radio"] {
+                margin-right: 8px;
+            }
+        
+            label {
+                display: block;
+                margin-bottom: 8px;
+                font-size: 17px;
+                color: green;
+                font-weight: 600;
+            }
+
+            p {
+                display: block;
+                text-align: center;
+                margin-bottom: 15px;
+                font-size: 30px;
+                color: green;
+                font-weight: 600;
+            }
+        
+            input,
+            textarea {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 12px;
+                box-sizing: border-box;
+                border-radius: 10px;
+            }
+            
+            select{
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 12px;
+                box-sizing: border-box;
+                border-radius: 10px;
+            }
+        
+            button {
+                background-color: #368b44;
+                color: #fff;
+                padding: 10px;
+                margin-top: 12px;
+                border-radius: 25px;
+                cursor: pointer;
+                width: 100%;
+                font-size: 16px;
+                transition: .2s linear;
+            }
+        
+            button:hover {
+                background-color: #0a6808;
+                border: none;
+                transform: translateY(-2px);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <p>Adventure Camp Registration</p>
+            <form>
+                <label for="name">Name</label>
+                <input type="text" id="uname" name="uname" required>
+                <label for="Age">Age</label>
+                <input type="Age" id="Age" required>
+                <label>Gender</label>
+                <div class="radio-group">
+                    <input type="radio" id="Male" value="Male" checked>
+                    <label>Male</label>
+                    <input type="radio" id="Female" value="Female">
+                    <label>Female</label>
+                </div>
+                <label>Camp Type</label>
+                <select>
+                    <Option>CampFire</Option>
+                    <Option>Paragliding</Option>
+                    <Option>Hiking</Option>
+                    <Option>Mountain Climbing</Option>
+                </select>
+                <label for="phone">Phone No</label>
+                <input type="tel" id="phone" name="phone" required>
+                <button type="submit">Register Now</button>
+            </form>
+        </div>
+    </body>
+</html>

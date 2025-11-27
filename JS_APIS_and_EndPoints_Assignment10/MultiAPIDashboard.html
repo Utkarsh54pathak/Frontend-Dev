@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multi-API Dashboard</title>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+
+        .card {
+            width: 250px;
+            padding: 20px;
+            border: 2px solid #aaa;
+            margin: 10px 0;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            background: #f3f3f3;
+        }
+        .loading {
+            background: linear-gradient(90deg, #e0e0e0 25%, #f7f7f7 50%, #e0e0e0 75%);
+            background-size: 400% 100%;
+            animation: skeleton 1.5s infinite;
+            color: transparent;
+        }
+
+        @keyframes skeleton {
+            0% { background-position: 100% 0; }
+            100% { background-position: -100% 0; }
+        }
+
+        #warning {
+            margin-top: 15px;
+            color: red;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Multi-API Dashboard</h2>
+
+<div class="card" id="userCard" class="loading">Loading Users...</div>
+<div class="card" id="orderCard" class="loading">Loading Orders...</div>
+<div class="card" id="productCard" class="loading">Loading Products...</div>
+
+<p id="warning">⚠ Some data could not be loaded.</p>
+
+<script>
+document.getElementById("userCard").classList.add("loading");
+document.getElementById("orderCard").classList.add("loading");
+document.getElementById("productCard").classList.add("loading");
+Promise.all([
+    fetch("http://localhost:3004/users").then(res => res.json()),
+    fetch("http://localhost:3004/orders").then(res => res.json()),
+    fetch("http://localhost:3004/products").then(res => res.json())
+])
+.then(([users, orders, products]) => {
+
+    document.getElementById("userCard").classList.remove("loading");
+    document.getElementById("orderCard").classList.remove("loading");
+    document.getElementById("productCard").classList.remove("loading");
+    document.getElementById("userCard").textContent = "Total Users: " + users.length;
+    document.getElementById("orderCard").textContent = "Total Orders: " + orders.length;
+    document.getElementById("productCard").textContent = "Total Products: " + products.length;
+})
+.catch(error => {
+    document.getElementById("warning").style.display = "block";
+    document.getElementById("userCard").classList.remove("loading");
+    document.getElementById("orderCard").classList.remove("loading");
+    document.getElementById("productCard").classList.remove("loading");
+
+    document.getElementById("userCard").textContent = "⚠ Users: Error";
+    document.getElementById("orderCard").textContent = "⚠ Orders: Error";
+    document.getElementById("productCard").textContent = "⚠ Products: Error";
+});
+</script>
+
+</body>
+</html>

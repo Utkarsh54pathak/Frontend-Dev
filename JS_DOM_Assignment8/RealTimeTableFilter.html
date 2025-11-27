@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Time Table Filter</title>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        #noResult {
+            margin-top: 10px;
+            font-weight: bold;
+            color: red;
+            display: none;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 15px;
+            width: 400px;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Student Search</h2>
+
+    <input type="text" id="searchBox" placeholder="Search name or branch...">
+
+    <p id="noResult">No results found</p>
+
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Branch</th>
+                <th>CGPA</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Shiv</td>
+                <td>CSE</td>
+                <td>9.1</td>
+            </tr>
+            <tr>
+                <td>Aman</td>
+                <td>ECE</td>
+                <td>8.4</td>
+            </tr>
+            <tr>
+                <td>Riya</td>
+                <td>ME</td>
+                <td>7.9</td>
+            </tr>
+            <tr>
+                <td>Sonia</td>
+                <td>CSE</td>
+                <td>8.8</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        const searchBox = document.getElementById("searchBox");
+        const table = document.getElementById("studentTable");
+        const rows = table.getElementsByTagName("tr");
+        const noResult = document.getElementById("noResult");
+        
+        searchBox.addEventListener("input", () => {
+            const value = searchBox.value.toLowerCase();
+            let visibleCount = 0;
+        
+            for (let i = 1; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName("td");
+                const name = cells[0].textContent.toLowerCase();
+                const branch = cells[1].textContent.toLowerCase();
+            
+                if (name.includes(value) || branch.includes(value)) {
+                    rows[i].style.display = "";
+                    visibleCount++;
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        
+            noResult.style.display = visibleCount === 0 ? "block" : "none";
+        });
+    </script>
+
+</body>
+</html>
