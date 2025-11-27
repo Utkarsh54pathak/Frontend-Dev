@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form Validation</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+
+        input {
+            padding: 8px;
+            width: 300px;
+            margin: 10px 0;
+            display: block;
+        }
+
+        .error {
+            border: 2px solid red !important;
+        }
+
+        #successMsg {
+            margin-top: 15px;
+            font-weight: bold;
+            color: green;
+            display: none;
+        }
+
+        button {
+            padding: 8px 15px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Registration Form</h2>
+
+<div>
+    <input type="text" id="name" placeholder="Enter Name">
+    <input type="email" id="email" placeholder="Enter Email">
+    <input type="password" id="password" placeholder="Enter Password (min 8 chars)">
+    <button id="registerBtn">Register</button>
+</div>
+
+<p id="successMsg">✔ Registration Successful!</p>
+
+<script>
+$(document).ready(function () {
+
+    const existingEmails = ["test@example.com", "user@mail.com", "shiv@gmail.com"];
+
+    $("#registerBtn").on("click", function () {
+
+        let name = $("#name").val().trim();
+        let email = $("#email").val().trim();
+        let password = $("#password").val().trim();
+
+        let valid = true;
+
+        $("input").removeClass("error");
+        if (name === "") {
+            $("#name").addClass("error");
+            valid = false;
+        }
+
+        let emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+        if (!emailPattern.test(email)) {
+            $("#email").addClass("error");
+            valid = false;
+        }
+
+        if (existingEmails.includes(email.toLowerCase())) {
+            $("#email").addClass("error");
+            valid = false;
+            alert("Email already exists! Try another.");
+        }
+        if (password.length < 8) {
+            $("#password").addClass("error");
+            valid = false;
+        }
+
+        if (valid) {
+            $("#successMsg").fadeIn(300);
+        } else {
+            $("#successMsg").hide();
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>

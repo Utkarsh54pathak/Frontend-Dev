@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome Page Greeting</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        #greeting { font-size: 22px; font-weight: bold; cursor: pointer; }
+        #welcomeMsg { margin-top: 15px; font-size: 18px; }
+        button { margin: 10px; padding: 8px 15px; }
+    </style>
+</head>
+
+<body>
+
+    <h2>Dynamic Welcome Page</h2>
+
+    <div id="greeting"></div>
+
+    <button id="changeBtn">Change Greeting</button>
+    <button id="toggleBtn">Toggle Welcome Message</button>
+
+    <div id="welcomeMsg">Welcome to our Website! Enjoy your stay.</div>
+
+    <script>
+        const greeting = document.getElementById("greeting");
+        const changeBtn = document.getElementById("changeBtn");
+        const toggleBtn = document.getElementById("toggleBtn");
+        const welcomeMsg = document.getElementById("welcomeMsg");
+        
+        function setGreeting() {
+            const hour = new Date().getHours();
+            let message = "";
+        
+            if (hour < 12) {
+                message = "Good Morning!";
+            } else if (hour < 18) {
+                message = "Good Afternoon!";
+            } else {
+                message = "Good Evening!";
+            }
+        
+            greeting.textContent = message;
+        }
+
+        setGreeting();
+
+        changeBtn.addEventListener("click", () => {
+            greeting.textContent = "Keep pushing forward! You are doing great 💪";
+        });
+
+        toggleBtn.addEventListener("click", () => {
+            if (welcomeMsg.style.display === "none") {
+                welcomeMsg.style.display = "block";
+            } else {
+                welcomeMsg.style.display = "none";
+            }
+        });
+
+        greeting.addEventListener("click", () => {
+            alert("You clicked the greeting!");
+        });
+    </script>
+
+</body>
+</html>

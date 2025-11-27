@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Subscription Panel</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .topic { 
+            margin: 8px 0; 
+            padding: 10px; 
+            border: 1px solid #666; 
+            border-radius: 5px; 
+            cursor: pointer;
+            width: 200px;
+        }
+        .subscribed { background: #d4ffd4; }
+        #successMsg { 
+            margin-top: 15px; 
+            font-weight: bold; 
+            color: green; 
+        }
+        #topics { margin-top: 20px; }
+        input { padding: 6px; }
+        button { padding: 7px 15px; margin: 5px; }
+    </style>
+</head>
+
+<body>
+
+<h2>Event Subscription Panel</h2>
+
+<button id="subscribeBtn">Subscribe</button>
+<button id="unsubscribeBtn">Unsubscribe</button>
+
+<br><br>
+
+<input type="text" id="newTopic" placeholder="Add new topic">
+<button id="addTopicBtn">Add Topic</button>
+
+<div id="topics">
+    <div class="topic">Sports</div>
+    <div class="topic">Technology</div>
+    <div class="topic">Music</div>
+</div>
+
+<div id="successMsg"></div>
+
+<script>
+$(document).ready(function () {
+    $("#subscribeBtn").on("click", function () {
+        $("#topics").on("click", ".topic", function () {
+            $(this).toggleClass("subscribed");
+            showMessage("Subscription updated!");
+        });
+
+        showMessage("Notifications Enabled!");
+    });
+    $("#unsubscribeBtn").on("click", function () {
+        $("#topics").off("click", ".topic");
+
+        $(".topic").removeClass("subscribed");
+        showMessage("Notifications Disabled!");
+    });
+
+    $("#addTopicBtn").on("click", function () {
+        const topicName = $("#newTopic").val().trim();
+        if (topicName === "") return;
+
+        $("#topics").append(`<div class="topic">${topicName}</div>`);
+        $("#newTopic").val("");
+        showMessage("New topic added!");
+    });
+    function showMessage(text) {
+        $("#successMsg")
+            .hide()
+            .text(text)
+            .fadeIn(300);
+    }
+
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Highlight</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="product.js" defer></script>
+
+    <style>
+        .product {
+            border: 1px solid #aaa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .highlight {
+            background: #ffffcc;
+        }
+
+        .favorite.selected {
+            color: red;
+        }
+
+        .product[data-discount="true"] {
+            border: 2px solid green;
+            background: #e9ffe9;
+        }
+
+        .details {
+            display: none;
+            font-size: 14px;
+            margin-top: 8px;
+            color: #555;
+        }
+
+        .favorite {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 22px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Product List</h1>
+    </header>
+
+    <main>
+        <section id="productList">
+
+            <div class="product" data-stock="10" data-discount="true">
+                <h3>Wireless Earbuds <span class="favorite">★</span></h3>
+                <p>Price: ₹1999</p>
+                <div class="details">High-quality earbuds with noise cancellation.</div>
+            </div>
+
+            <div class="product" data-stock="0" data-discount="false">
+                <h3>Smartwatch <span class="favorite">★</span></h3>
+                <p>Price: ₹3499</p>
+                <div class="details">Tracks your steps, heart rate, and sleep.</div>
+            </div>
+
+            <div class="product" data-stock="5" data-discount="true">
+                <h3>Bluetooth Speaker <span class="favorite">★</span></h3>
+                <p>Price: ₹1499</p>
+                <div class="details">Portable speaker with deep bass.</div>
+            </div>
+
+            <div class="product" data-stock="3" data-discount="false">
+                <h3>Gaming Mouse <span class="favorite">★</span></h3>
+                <p>Price: ₹799</p>
+                <div class="details">RGB mouse with fast response.</div>
+            </div>
+
+            <div class="product" data-stock="0" data-discount="true">
+                <h3>Laptop Bag <span class="favorite">★</span></h3>
+                <p>Price: ₹999</p>
+                <div class="details">Waterproof bag with extra padding.</div>
+            </div>
+
+        </section>
+    </main>
+
+    <script>
+        $(document).ready(function () {
+        $(".product").on("click", function () {
+            $(".product").removeClass("highlight");
+            $(this).addClass("highlight");
+            let stock = $(this).data("stock");
+            if (stock === 0) {
+                alert("⚠ This product is out of stock!");
+            }
+        });
+
+        $(".product").hover(
+            function () {
+                $(this).find(".details").stop().slideDown();
+            },
+            function () {
+                $(this).find(".details").stop().slideUp();
+            }
+        );
+        $(".favorite").on("click", function (event) {
+            event.stopPropagation(); 
+            $(this).toggleClass("selected");
+        });
+        $("[data-discount='true']").each(function () {
+        });
+    });
+
+    </script>
+
+</body>
+</html>

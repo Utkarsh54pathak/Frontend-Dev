@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic Blog Posts</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+
+        #blogList .post {
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .highlight {
+            background: #fff5b8;
+            border-color: #ffcf00;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 3px 8px;
+            margin-right: 6px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        button { padding: 8px 15px; margin: 5px; }
+        input { padding: 6px; width: 250px; }
+    </style>
+</head>
+
+<body>
+
+<h2>Dynamic Blog Post Manager</h2>
+<button id="addPostBtn">Add New Post</button>
+<button id="prependPostBtn">Prepend Featured Post</button>
+<button id="removeLastBtn">Remove Last Post</button>
+
+<br><br>
+<input type="text" id="highlightInput" placeholder="Keyword to highlight">
+<button id="highlightBtn">Highlight Posts</button>
+
+<section id="blogList">
+    <div class="post">
+        <h3>JavaScript Tips</h3>
+        <p>Learn the basics of JS event handling and DOM manipulation.</p>
+    </div>
+
+    <div class="post">
+        <h3>Python for Data Science</h3>
+        <p>Pandas, NumPy, and matplotlib explained clearly.</p>
+    </div>
+
+    <div class="post">
+        <h3>AI and Machine Learning</h3>
+        <p>Understanding neural networks and gradient descent.</p>
+    </div>
+
+    <div class="post">
+        <h3>Frontend Development</h3>
+        <p>HTML, CSS, JavaScript and modern frameworks.</p>
+    </div>
+
+    <div class="post">
+        <h3>Cybersecurity Essentials</h3>
+        <p>Learn how to secure networks and applications.</p>
+    </div>
+
+</section>
+
+
+<script>
+$(document).ready(function () {
+    $("#addPostBtn").on("click", function () {
+        $("#blogList").append(`
+            <div class="post">
+                <h3>New Blog Post</h3>
+                <p>This is a dynamically added blog post.</p>
+            </div>
+        `);
+    });
+
+    $("#prependPostBtn").on("click", function () {
+        $("#blogList").prepend(`
+            <div class="post highlight">
+                <h3>🔥 Featured Post</h3>
+                <p>This post is highlighted as featured.</p>
+            </div>
+        `);
+    });
+    $("#removeLastBtn").on("click", function () {
+        $("#blogList .post:last").remove();
+    });
+
+    $("#blogList .post h3").each(function () {
+        $(this).before(`<span class="tag">Blog</span>`);
+        $(this).after(`<span class="tag">Post</span>`);
+    });
+    $("#highlightBtn").on("click", function () {
+        let keyword = $("#highlightInput").val().trim().toLowerCase();
+
+        $(".post").removeClass("highlight"); // reset
+
+        if (keyword === "") return;
+
+        $(".post").each(function () {
+            let text = $(this).text().toLowerCase();
+
+            if (text.includes(keyword)) {
+                $(this).addClass("highlight");
+            }
+        });
+    });
+
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multi jQuery Widgets</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+
+        #carousel img {
+            width: 300px;
+            height: 180px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .widget {
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid #666;
+            border-radius: 6px;
+            width: 200px;
+            cursor: pointer;
+        }
+
+        .active-widget {
+            background: #ffffb5;
+            border-color: #ffaa00;
+        }
+
+        .tooltip-box {
+            position: absolute;
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        #modalOverlay {
+            position: fixed;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: none;
+        }
+        #modalBox {
+            background: white;
+            width: 300px;
+            padding: 20px;
+            margin: 150px auto;
+            border-radius: 10px;
+        }
+
+        button { padding: 8px 15px; }
+    </style>
+</head>
+
+<body>
+
+<h2>Multi-jQuery Widgets</h2>
+
+<section id="carousel">
+    <img src="https://picsum.photos/id/10/300/180">
+    <img src="https://picsum.photos/id/20/300/180">
+    <img src="https://picsum.photos/id/30/300/180">
+</section>
+
+<br>
+
+<div class="widget" data-tip="This is widget A">Widget A</div>
+<div class="widget" data-tip="This is widget B">Widget B</div>
+<div class="widget" data-tip="This is widget C">Widget C</div>
+
+<br>
+
+<button id="showModalBtn">Show Notification</button>
+
+<div id="modalOverlay">
+    <div id="modalBox">
+        <p>This is a modal notification popup!</p>
+        <button id="closeModal">Close</button>
+    </div>
+</div>
+
+<div class="tooltip-box" id="tooltip"></div>
+
+<script>
+var jq1 = jQuery.noConflict(true);
+var jq2 = jQuery.noConflict(true);
+jq1(document).ready(function () {
+
+    let index = 0;
+    const slides = jq1("#carousel img");
+
+    slides.eq(0).show();
+
+    setInterval(function () {
+        slides.eq(index).fadeOut(500);
+        index = (index + 1) % slides.length;
+        slides.eq(index).fadeIn(500);
+    }, 3000);
+
+    jq1(".widget").on("click", function () {
+        jq1(".widget").removeClass("active-widget");
+        jq1(this).addClass("active-widget");
+    });
+});
+
+jq2(document).ready(function () {
+
+    jq2("#showModalBtn").on("click", function () {
+        jq2("#modalOverlay").fadeIn();
+    });
+    jq2("#closeModal").on("click", function () {
+        jq2("#modalOverlay").fadeOut();
+    });
+    const tooltip = jq2("#tooltip");
+
+    jq2(".widget").on("mouseenter", function (event) {
+        let tip = jq2(this).data("tip");
+
+        tooltip.text(tip).fadeIn(150).css({
+            top: event.pageY + 10,
+            left: event.pageX + 10
+        });
+    });
+
+    jq2(".widget").on("mouseleave", function () {
+        tooltip.fadeOut(100);
+    });
+
+});
+</script>
+
+</body>
+</html>

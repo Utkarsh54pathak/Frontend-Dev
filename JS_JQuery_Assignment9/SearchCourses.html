@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Courses</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .course {
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #777;
+            border-radius: 6px;
+        }
+        .highlight {
+            background: yellow;
+            font-weight: bold;
+        }
+        #count {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input {
+            padding: 7px;
+            width: 300px;
+        }
+        button {
+            padding: 7px 15px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Search Courses</h2>
+
+<input type="text" id="searchBox" placeholder="Search courses...">
+<button id="clearBtn">Clear</button>
+
+<div id="count"></div>
+
+<section id="courseList">
+    <div class="course">JavaScript for Beginners</div>
+    <div class="course">Advanced Python Programming</div>
+    <div class="course">Machine Learning Basics</div>
+    <div class="course">Deep Learning with TensorFlow</div>
+    <div class="course">Web Development Bootcamp</div>
+</section>
+
+<script>
+$(document).ready(function () {
+    function highlightText(text, keyword) {
+        let regex = new RegExp(`(${keyword})`, "gi");
+        return text.replace(regex, "<span class='highlight'>$1</span>");
+    }
+
+    $("#searchBox").on("keyup", function () {
+        let query = $(this).val().trim().toLowerCase();
+        let count = 0;
+
+        $(".course").each(function () {
+            let courseText = $(this).text();
+            let lower = courseText.toLowerCase();
+
+            if (lower.includes(query) && query !== "") {
+                $(this).show();
+                $(this).html(highlightText(courseText, query)); // 2. highlight
+                count++;
+            }
+            else if (query === "") {
+                $(this).text(courseText);
+                $(this).show();
+            }
+            else {
+                $(this).hide(); 
+            }
+        });
+
+        $("#count").text(query === "" ? "" : `${count} course(s) found`);
+    });
+
+    $("#clearBtn").on("click", function () {
+        $("#searchBox").val("");
+        $("#count").text("");
+        $(".course").each(function () {
+            let original = $(this).text();
+            $(this).text(original).show();
+        });
+    });
+
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Team Members Directory</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+
+        .department {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 2px solid #444;
+            border-radius: 10px;
+        }
+
+        .department > h2 {
+            cursor: pointer;
+            color: darkblue;
+        }
+
+        .team-member {
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .highlight {
+            background: #fff6b0;
+        }
+
+        .contact {
+            display: none;
+            font-size: 12px;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        button {
+            padding: 8px 15px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Team Members Directory</h1>
+</header>
+
+<main>
+
+    <button id="randomBtn">Highlight Sibling Employees (Random)</button>
+
+    <section class="department" data-dept="engineering">
+        <h2>Engineering Department</h2>
+
+        <div class="team-member manager">
+            Alex (Manager)
+            <div class="contact">Email: alex@company.com</div>
+        </div>
+
+        <div class="team-member">Riya (Frontend)
+            <div class="contact">Email: riya@company.com</div>
+        </div>
+
+        <div class="team-member">Karan (Backend)
+            <div class="contact">Email: karan@company.com</div>
+        </div>
+    </section>
+
+    <section class="department" data-dept="sales">
+        <h2>Sales Department</h2>
+
+        <div class="team-member manager">
+            Meera (Manager)
+            <div class="contact">Email: meera@company.com</div>
+        </div>
+
+        <div class="team-member">John (Sales Exec)
+            <div class="contact">Email: john@company.com</div>
+        </div>
+
+        <div class="team-member">Sara (Sales Exec)
+            <div class="contact">Email: sara@company.com</div>
+        </div>
+    </section>
+
+</main>
+<script>
+    $(document).ready(function () {
+
+    $(".manager").on("click", function () {
+        $(".team-member").removeClass("highlight");
+
+        $(this)
+            .siblings(".team-member")
+            .addClass("highlight");
+    });
+
+
+    $(".team-member").hover(
+        function () {
+            $(this).find(".contact").stop().slideDown();
+        },
+        function () {
+            $(this).find(".contact").stop().slideUp();
+        }
+    );
+
+    $(".department > h2").on("click", function () {
+        $(".team-member").removeClass("highlight");
+
+        $(this)
+            .parent()   
+            .children(".team-member")
+            .addClass("highlight");
+    });
+
+
+    $("#randomBtn").on("click", function () {
+
+        let members = $(".team-member");
+        let randomIndex = Math.floor(Math.random() * members.length);
+
+        let chosen = members.eq(randomIndex);
+
+        $(".team-member").removeClass("highlight");
+
+        chosen.siblings(".team-member").addClass("highlight");
+
+        chosen.addClass("highlight");
+    });
+
+
+    $(".department > h2").dblclick(function () {
+      
+        $(this)
+            .parent()
+            .find(".team-member")
+            .slideToggle();
+    });
+
+});
+
+</script>
+</body>
+</html>

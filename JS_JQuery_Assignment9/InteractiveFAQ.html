@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive FAQ</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="faq.js" defer></script>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+
+        .faq-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #aaa;
+            border-radius: 8px;
+        }
+
+        .question {
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .answer {
+            display: none;
+            margin-top: 10px;
+            padding-left: 10px;
+            color: #444;
+        }
+
+        .highlight {
+            background: #fff3c6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>FAQ Section</h1>
+    </header>
+
+    <main>
+        <section id="faqSection">
+
+            <article class="faq-item">
+                <div class="question">1. What is JavaScript?</div>
+                <div class="answer">
+                    JavaScript is a scripting language used for web development.
+                    <br><input type="text" placeholder="Your thoughts...">
+                </div>
+            </article>
+
+            <article class="faq-item">
+                <div class="question">2. What is jQuery?</div>
+                <div class="answer">
+                    jQuery is a JavaScript library used to simplify DOM manipulation.
+                    <br><input type="text" placeholder="Your thoughts...">
+                </div>
+            </article>
+
+            <article class="faq-item">
+                <div class="question">3. What is AJAX?</div>
+                <div class="answer">
+                    AJAX allows asynchronous data loading without refreshing the page.
+                    <br><input type="text" placeholder="Your thoughts...">
+                </div>
+            </article>
+
+            <article class="faq-item">
+                <div class="question">4. What is CSS?</div>
+                <div class="answer">
+                    CSS is used to style HTML elements.
+                    <br><input type="text" placeholder="Your thoughts...">
+                </div>
+            </article>
+
+            <article class="faq-item">
+                <div class="question">5. What is HTML?</div>
+                <div class="answer">
+                    HTML is the structure of a webpage.
+                    <br><input type="text" placeholder="Your thoughts...">
+                </div>
+            </article>
+
+        </section>
+    </main>
+    <script>
+        $(document).ready(function () {
+
+        $(".question").on("click", function () {
+            $(this).next(".answer").slideToggle();
+        });
+
+        $(".question").hover(
+            function () { $(this).css("color", "blue"); },
+            function () { $(this).css("color", "black"); }
+        );
+
+        $(".question").on("dblclick", function () {
+            $(".answer").slideUp();
+        });
+
+        $("input").on("focus", function () {
+            $(this).closest(".faq-item").addClass("highlight");
+        });
+
+        $("input").on("blur", function () {
+            $(this).closest(".faq-item").removeClass("highlight");
+        });
+
+    });
+
+    </script>
+</body>
+</html>

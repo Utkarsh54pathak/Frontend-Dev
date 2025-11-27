@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Special Offer Banner</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+
+        .banner {
+            background: #ffe9c4;
+            padding: 20px;
+            margin: 10px 0;
+            font-size: 20px;
+            border-radius: 10px;
+            display: block;
+        }
+
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+        }
+
+        #controls {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Special Offer Banners</h1>
+</header>
+
+<main>
+
+<section id="controls">
+    <button id="hideBtn">Hide Banners</button>
+    <button id="showBtn">Show Banners</button>
+    <button id="slideBtn">Slide Toggle</button>
+    <button id="fadeBtn">Fade Toggle</button>
+</section>
+
+<section id="bannerSection">
+
+    <div class="banner">🔥 50% OFF on Electronics!</div>
+    <div class="banner">🎉 Buy 1 Get 1 Free on Clothing!</div>
+    <div class="banner">🚀 Free Delivery on Orders Above ₹499!</div>
+    <div class="banner">💳 Extra 10% Cashback on Credit Cards!</div>
+    <div class="banner">🏆 Exclusive Rewards for Prime Members!</div>
+
+</section>
+
+</main>
+<script>
+    $(document).ready(function () {
+
+    $("#hideBtn").on("click", function () {
+        $(".banner").hide();
+    });
+
+    $("#showBtn").on("click", function () {
+        $(".banner").show();
+    });
+
+    $("#slideBtn").on("click", function () {
+        $(".banner").slideToggle();
+    });
+
+    $("#fadeBtn").on("click", function () {
+        $(".banner").fadeToggle();
+    });
+
+    let index = 0;
+    const banners = $(".banner");
+
+    banners.hide();
+    $(banners[0]).show();
+
+    function rotateBanners() {
+        $(banners[index]).fadeOut(800);
+
+        index = (index + 1) % banners.length;
+
+        $(banners[index]).fadeIn(800);
+    }
+
+    setInterval(rotateBanners, 5000);
+
+});
+
+</script>
+</body>
+</html>
