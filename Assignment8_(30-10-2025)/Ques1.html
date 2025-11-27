@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pseudo-Classes Example</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+          
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 40px;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                background: #f5f5f5;
+            }
+          
+            .example {
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                text-align: center;
+                width: 200px;
+            }
+          
+            a {
+                display: inline-block;
+                padding: 10px 15px;
+                background: #007bff;
+                color: white;
+                text-decoration: none;
+                border-radius: 6px;
+                transition: all 0.3s ease;
+            }
+          
+            a:hover {
+                background: #0056b3;
+            }
+          
+            a:active {
+                background: #003f7f;
+            }
+          
+            input:focus {
+                outline: 2px solid #007bff;
+            }
+          
+            ul li:nth-child(odd) {
+                background: #dbeafe;
+            }
+          
+            ul li:nth-child(even) {
+                background: #bfdbfe;
+            }
+          
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+          
+            ul li {
+                margin: 4px 0;
+                padding: 6px;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="example">
+            <h3>:hover & :active</h3>
+            <a href="#">Hover or Click Me</a>
+            <p>Changes color when hovered or clicked.</p>
+        </div>
+        <div class="example">
+            <h3>:focus</h3>
+            <input type="text" placeholder="Click here">
+            <p>Outline appears on focus.</p>
+        </div>
+        <div class="example">
+            <h3>:nth-child()</h3>
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+                <li>Item 4</li>
+            </ul>
+            <p>Odd and even items styled differently.</p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Image Showcase</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background: #f8fafc;
+                margin: 0;
+                padding: 40px;
+                display: flex;
+                justify-content: center;
+            }
+
+            .gallery {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+                max-width: 1000px;
+            }
+
+            figure {
+                position: relative;
+                overflow: hidden;
+                border-radius: 12px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            }
+
+            img {
+                width: 100%;
+                height: 250px;
+                object-fit: cover;
+                transition: all 0.4s ease;
+            }
+
+            figure:hover img {
+                transform: scale(1.1);
+                filter: brightness(70%);
+            }
+
+            figcaption {
+                text-align: center;
+                padding: 10px;
+                background: white;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="gallery">
+            <figure><img src="https://picsum.photos/300?1"><figcaption>Nature 1</figcaption></figure>
+            <figure><img src="https://picsum.photos/300?2"><figcaption>Nature 2</figcaption></figure>
+            <figure><img src="https://picsum.photos/300?3"><figcaption>Nature 3</figcaption></figure>
+            <figure><img src="https://picsum.photos/300?4"><figcaption>Nature 4</figcaption></figure>
+            <figure><img src="https://picsum.photos/300?5"><figcaption>Nature 5</figcaption></figure>
+            <figure><img src="https://picsum.photos/300?6"><figcaption>Nature 6</figcaption></figure>
+        </div>
+    </body>
+</html>

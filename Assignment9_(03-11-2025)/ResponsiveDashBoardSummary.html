@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Dashboard Summary</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #f7f7f7; }
+
+  .dashboard {
+    display: grid;
+    grid-template-areas:
+      "header header"
+      "sidebar main";
+    grid-template-columns: 200px 1fr;
+    min-height: 100vh;
+    animation: fadeIn 1.2s ease;
+  }
+
+  header {
+    grid-area: header;
+    background: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+  }
+
+  aside {
+    grid-area: sidebar;
+    background: #444;
+    color: white;
+    padding: 20px;
+  }
+
+  main {
+    grid-area: main;
+    padding: 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 750px) {
+    .dashboard {
+      grid-template-areas:
+        "header"
+        "sidebar"
+        "main";
+      grid-template-columns: 1fr;
+    }
+    aside {
+      text-align: center;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="dashboard">
+    <header>Responsive Dashboard</header>
+    <aside>
+      <h3>Sidebar</h3>
+      <ul>
+        <li>Filters</li>
+        <li>Typography</li>
+        <li>Media Queries</li>
+        <li>Cheat Sheet</li>
+      </ul>
+    </aside>
+    <main>
+      <div class="card">Filters</div>
+      <div class="card">Typography</div>
+      <div class="card">Media Queries</div>
+      <div class="card">Cheat Sheet Links</div>
+    </main>
+  </div>
+</body>
+</html>

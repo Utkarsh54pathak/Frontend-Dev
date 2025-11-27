@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Calculator for practice</title>
+    <style>
+        #calc{
+            background-color: rgb(62, 90, 98);
+            color: black;
+            font: bold 10px;
+        }
+        #oper{
+            background-color: rgb(216, 97, 12);
+        }
+
+        .display{
+            background-color: black;
+            color: white;
+            text-align: right;
+            height: 50px;
+            width: 285px;
+        }
+
+        .body{
+            height: 430px;
+            width: 292px;
+            border: 20;
+        }
+        button{
+            border-radius: 15%;
+            background-color: black;
+            color: white;
+            height: 50px;
+            width: 70px;
+        }
+        #zero{
+            width: 143px;
+        }
+        .body{
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="body">
+        <input type="text" class="display" placeholder="0">
+        <div>
+            <button id="calc">AC</button>
+            <button id="calc">+/-</button>
+            <button id="calc">%</button>
+            <button id="oper">/</button>
+        </div>
+        <div>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button id="oper">*</button>
+        </div>
+        <div>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button id="oper">-</button>
+        </div>
+        <div>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button id="oper">+</button>
+        </div>
+        <div>
+            <button id="zero">0</button>
+            <button>.</button>
+            <button id="oper">=</button>
+        </div>
+    </div>
+</body>
+</html>

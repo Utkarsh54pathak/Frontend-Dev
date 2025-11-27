@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Pricing Section</title>
+      <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #f1f5f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        .pricing-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 280px;
+            text-align: center;
+            padding: 30px 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        .card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        .card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+
+        .card.featured {
+            background-color: #0077b6;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 2rem;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .features {
+            list-style: none;
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #023e8a;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .card.featured .btn {
+            background-color: #fff;
+            color: #0077b6;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #03045e;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 750px) {
+            .pricing-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .card.featured {
+                transform: none;
+            }
+        }
+      </style>
+    </head>
+    <body>
+
+        <div class="pricing-section">
+            <div class="card">
+                <h3>Basic Plan</h3>
+                <p class="price">$9/mo</p>
+                <ul class="features">
+                    <li>1 Project</li>
+                    <li>5GB Storage</li>
+                    <li>Email Support</li>
+                </ul>
+                <button class="btn">Choose Plan</button>
+            </div>
+          
+            <div class="card featured">
+                <h3>Pro Plan</h3>
+                <p class="price">$19/mo</p>
+                <ul class="features">
+                    <li>10 Projects</li>
+                    <li>50GB Storage</li>
+                    <li>Priority Support</li>
+                </ul>
+                <button class="btn">Get Started</button>
+            </div>
+          
+            <div class="card">
+                <h3>Premium Plan</h3>
+                <p class="price">$29/mo</p>
+                <ul class="features">
+                    <li>Unlimited Projects</li>
+                    <li>200GB Storage</li>
+                    <li>24/7 Support</li>
+                </ul>
+                <button class="btn">Choose Plan</button>
+            </div>
+        </div>
+
+    </body>
+</html>

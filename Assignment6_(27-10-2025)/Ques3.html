@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Flexbox Homepage</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+          
+            body {
+                font-family: "Poppins", sans-serif;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+                background-color: #f5f7fa;
+            }
+          
+            header {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                background-color: #0077b6;
+                color: white;
+                padding: 15px 0;
+            }
+          
+            header nav a {
+                text-decoration: none;
+                color: white;
+                font-weight: bold;
+                transition: color 0.3s;
+            }
+          
+            header nav a:hover {
+                color: #caf0f8;
+            }
+          
+            main {
+                flex: 1;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                padding: 40px;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+          
+            .box {
+                background-color: white;
+                border: 2px solid #0077b6;
+                border-radius: 10px;
+                width: 250px;
+                height: 180px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.3rem;
+                color: #023e8a;
+                font-weight: bold;
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+          
+            .box:hover {
+                transform: rotate(2deg);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            }
+          
+            @media (max-width: 800px) {
+                main {
+                    flex-direction: column;
+                }
+            }
+        </style>
+    </head>
+    <body>
+      <header>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Services</a>
+                <a href="#">Projects</a>
+                <a href="#">Contact</a>
+            </nav>
+      </header>
+
+        <main>
+            <div class="box">Services</div>
+            <div class="box">Projects</div>
+            <div class="box">Contact</div>
+        </main>
+
+    </body>
+</html>

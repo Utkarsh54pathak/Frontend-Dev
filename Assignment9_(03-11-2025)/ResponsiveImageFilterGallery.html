@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Image Filter Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      text-align: center;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: filter 0.5s ease;
+    }
+
+    /* Apply different filters */
+    .gallery-item:nth-child(1) img { filter: blur(3px); }
+    .gallery-item:nth-child(2) img { filter: grayscale(100%); }
+    .gallery-item:nth-child(3) img { filter: sepia(100%); }
+    .gallery-item:nth-child(4) img { filter: brightness(1.4); }
+    .gallery-item:nth-child(5) img { filter: contrast(200%); }
+    .gallery-item:nth-child(6) img { filter: hue-rotate(90deg); }
+
+    /* Remove filter on hover */
+    .gallery-item img:hover {
+      filter: none;
+    }
+
+    .caption {
+      padding: 10px;
+      font-size: 16px;
+      background: #fff;
+      color: #333;
+    }
+
+    /* Responsive Design for small screens */
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Responsive Image Filter Gallery</h1>
+
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="https://picsum.photos/id/1011/400/300" alt="Blur">
+      <div class="caption">Blur Filter</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://picsum.photos/id/1012/400/300" alt="Grayscale">
+      <div class="caption">Grayscale Filter</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://picsum.photos/id/1013/400/300" alt="Sepia">
+      <div class="caption">Sepia Filter</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://picsum.photos/id/1014/400/300" alt="Brightness">
+      <div class="caption">Brightness Filter</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://picsum.photos/id/1015/400/300" alt="Contrast">
+      <div class="caption">Contrast Filter</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://picsum.photos/id/1016/400/300" alt="Hue Rotate">
+      <div class="caption">Hue-Rotate Filter</div>
+    </div>
+  </div>
+
+</body>
+</html>

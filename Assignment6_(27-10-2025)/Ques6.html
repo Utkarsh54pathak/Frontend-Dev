@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Responsive Blog Layout</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+            }
+          
+            body {
+                display: grid;
+                grid-template-areas:
+                    "header header"
+                    "sidebar main"
+                    "footer footer";
+                grid-template-columns: 1fr 3fr;
+                gap: 20px;
+                min-height: 100vh;
+                background-color: #f8f9fa;
+                padding: 20px;
+            }
+          
+            header {
+                grid-area: header;
+                background-color: #007bff;
+                color: white;
+                text-align: center;
+                padding: 20px;
+                border-radius: 10px;
+            }
+          
+            header nav a {
+                color: white;
+                text-decoration: none;
+                margin: 0 10px;
+                font-weight: bold;
+            }
+
+            aside {
+                grid-area: sidebar;
+                background-color: #e9ecef;
+                padding: 20px;
+                border-radius: 10px;
+            }
+          
+            aside h2 {
+                margin-bottom: 15px;
+                color: #333;
+            }
+          
+            aside ul {
+                list-style: none;
+            }
+          
+            aside li {
+                margin-bottom: 10px;
+            }
+          
+            main {
+                grid-area: main;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+          
+            .post {
+                background-color: white;
+                border-radius: 10px;
+                padding: 20px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+          
+            .post:hover {
+                transform: scale(1.03);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            }
+
+            footer {
+                grid-area: footer;
+                background-color: #343a40;
+                color: white;
+                text-align: center;
+                padding: 15px;
+                border-radius: 10px;
+            }
+
+            @media (max-width: 800px) {
+                body {
+                    grid-template-areas:
+                        "header"
+                        "main"
+                    "sidebar"
+                    "footer";
+                    grid-template-columns: 1fr;
+                }
+            
+                main {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+        <header>
+            <h1>My Blog</h1>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+        </header>
+
+        <aside>
+            <h2>Categories</h2>
+            <ul>
+            <li>Technology</li>
+            <li>Travel</li>
+            <li>Food</li>
+            <li>Lifestyle</li>
+            <li>Health</li>
+            </ul>
+        </aside>
+
+        <main>
+            <div class="post">
+                <h2>Post Title 1</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis arcu nec justo placerat tempor.</p>
+            </div>
+            <div class="post">
+                <h2>Post Title 2</h2>
+                <p>Integer id dui in lorem vehicula gravida. Aliquam erat volutpat. Curabitur venenatis lacinia nulla.</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>Contact us at: contact@myblog.com | © 2025 My Blog</p>
+        </footer>
+
+    </body>
+</html>

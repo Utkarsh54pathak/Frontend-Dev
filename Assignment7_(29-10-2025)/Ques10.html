@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Navigation Bar with Transitions</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: "Poppins", sans-serif;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+          
+            nav {
+                background-color: #1976d2;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+          
+            nav a {
+                color: white;
+                text-decoration: none;
+                padding: 15px 25px;
+                transition: all 0.3s ease;
+                border-right: 1px solid rgba(255,255,255,0.2);
+            }
+          
+            nav a:last-child {
+                border-right: none;
+            }
+          
+            nav a:hover {
+                background-color: #0d47a1;
+                transform: translateY(-2px);
+            }
+          
+            nav a.active {
+                background-color: #1565c0;
+                border-bottom: 3px solid #ffeb3b;
+            }
+          
+            @media (max-width: 700px) {
+                nav {
+                    flex-direction: column;
+                    align-items: center;
+                }
+            
+                nav a {
+                    width: 100%;
+                    text-align: center;
+                    border-right: none;
+                    border-bottom: 1px solid rgba(255,255,255,0.2);
+                }
+            }
+          
+            footer {
+                margin-top: auto;
+                background-color: #eeeeee;
+                text-align: center;
+                padding: 15px 0;
+                font-size: 0.9rem;
+                color: #333;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Contact</a>
+        </nav>
+        <footer>
+            © 2025 Your Website | Designed for CSS Practice
+        </footer>
+
+    </body>
+</html>

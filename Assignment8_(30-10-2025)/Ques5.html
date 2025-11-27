@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Styled Buttons</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          background: #f3f4f6;
+        }
+
+        .buttons {
+          display: flex;
+          gap: 20px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        button {
+          padding: 12px 24px;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-size: 1rem;
+        }
+
+        .primary {
+          background: #2563eb;
+          color: white;
+        }
+
+        .primary:hover {
+          background: #1d4ed8;
+        }
+
+        .secondary {
+          background: #e5e7eb;
+          color: #111827;
+        }
+
+        .secondary:hover {
+          background: #d1d5db;
+        }
+
+        .outline {
+          border: 2px solid #2563eb;
+          color: #2563eb;
+          background: transparent;
+        }
+
+        .outline:hover {
+          background: #2563eb;
+          color: white;
+        }
+
+        button:focus {
+          outline: 3px solid #93c5fd;
+        }
+
+        button:disabled {
+          background: #9ca3af;
+          cursor: not-allowed;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="buttons">
+        <button class="primary">Primary</button>
+        <button class="secondary">Secondary</button>
+        <button class="outline">Outline</button>
+        <button disabled>Disabled</button>
+      </div>
+    </body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Typography and Text Styling Page</title>
+
+        <style>
+          /* -------------------------------
+             BASIC PAGE STYLING
+          --------------------------------*/
+          body {
+            font-family: "Poppins", sans-serif;
+            background-color: #fafafa;
+            color: #333;
+            line-height: 1.8; /* improves readability */
+            letter-spacing: 0.5px; /* adds spacing between letters */
+            margin: 40px;
+          }
+
+          h1 {
+            text-align: center;
+            font-family: "Georgia", serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #222;
+          }
+
+          h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 40px;
+            color: #444;
+          }
+
+          p {
+            text-align: justify;
+            font-size: 1rem;
+            margin: 10px 0;
+          }
+
+          /* -------------------------------
+             FONT FAMILY & WEIGHT EXAMPLES
+          --------------------------------*/
+          .serif {
+            font-family: "Times New Roman", Times, serif;
+          }
+
+          .sans-serif {
+            font-family: "Arial", Helvetica, sans-serif;
+          }
+
+          .monospace {
+            font-family: "Courier New", monospace;
+          }
+
+          /* -------------------------------
+             CUSTOM STYLING FOR <mark>, <strong>, <em>
+          --------------------------------*/
+          mark {
+            background-color: #ffe082;
+            color: #000;
+            padding: 2px 4px;
+            border-radius: 4px;
+          }
+
+          strong {
+            color: #d32f2f;
+            font-weight: bold;
+          }
+
+          em {
+            color: #1976d2;
+            font-style: italic;
+          }
+
+          /* -------------------------------
+             PSEUDO ELEMENTS
+          --------------------------------*/
+          p::first-letter {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #0072ff;
+            float: left;
+            line-height: 1;
+            margin-right: 8px;
+          }
+
+          p::first-line {
+            font-weight: 600;
+            color: #555;
+          }
+
+          /* -------------------------------
+             BLOCKQUOTE STYLING
+          --------------------------------*/
+          blockquote {
+            border-left: 5px solid #0072ff;
+            padding-left: 15px;
+            font-style: italic;
+            color: #555;
+            margin: 20px 0;
+          }
+        </style>
+    </head>
+    <body>
+        <h1>Typography and Text Styling Showcase</h1>
+        <h2>1. Serif Font Example</h2>
+        <p class="serif">
+            <mark>Typography</mark> plays a crucial role in design and readability. The choice of fonts, sizes, and weights affects how the reader perceives the message. Using a <strong>serif</strong> font like “Times New Roman” adds a touch of tradition and formality to the text.
+        </p>
+
+        <h2>2. Sans-serif Font Example</h2>
+        <p class="sans-serif">
+            Sans-serif fonts, such as <em>Arial</em> and <em>Helvetica</em>, are modern and clean. They are widely used in web design for clarity and minimalism. Adjusting <mark>line-height</mark> and <mark>letter-spacing</mark> improves readability across devices.
+        </p>
+
+        <h2>3. Monospace Font Example</h2>
+        <p class="monospace">
+            Monospace fonts like “Courier New” are often used for coding or tabular data because every character takes the same width. This ensures <strong>consistent alignment</strong> and helps with structured layouts.
+        </p>
+
+        <blockquote>
+            “Good typography is invisible. Bad typography is everywhere.”  
+            — Anonymous
+        </blockquote>
+        <h2>4. Pseudo-elements in Action</h2>
+        <p>
+            This paragraph demonstrates the use of <strong>::first-letter</strong> and <strong>::first-line</strong>. Notice how the first letter is larger and colored differently, while the first line is bolded for emphasis. These techniques draw attention to key parts of your text without using additional HTML tags.
+        </p>
+    </body>
+</html>

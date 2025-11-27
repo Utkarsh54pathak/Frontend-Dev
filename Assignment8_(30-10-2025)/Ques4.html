@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Selectors Practice</title>
+        <style>
+            p {
+                color: #1d4ed8;
+            }
+
+            .highlight {
+                background: #fef3c7;
+            }
+          
+            #unique {
+                font-weight: bold;
+                color: #dc2626;
+            }
+          
+            a[href^="https"] {
+                color: green;
+                text-decoration: underline;
+            }
+          
+            div p {
+                font-style: italic;
+            }
+          
+            ul > li {
+                color: #2563eb;
+            }
+          
+            h3 + p {
+                background: #e0f2fe;
+            }
+          
+            h2 ~ p {
+                color: #9333ea;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>CSS Selectors Practice</h1>
+        <h2>Element and Class Selector</h2>
+        <p>This is a paragraph using element selector.</p>
+        <p class="highlight">This one has a class selector applied.</p>
+        <h3>ID and Attribute Selector</h3>
+        <p id="unique">This paragraph has an ID selector.</p>
+        <a href="https://example.com">Visit Example (https link)</a>
+        <h3>Combinators</h3>
+        <div>
+            <p>This paragraph is inside a div (descendant).</p>
+        </div>
+        <ul>
+            <li>Child of UL</li>
+            <li>Another list item</li>
+        </ul>
+        <p>General sibling example paragraph.</p>
+        <footer>Created for CSS Selector Practice</footer>
+    </body>
+</html>

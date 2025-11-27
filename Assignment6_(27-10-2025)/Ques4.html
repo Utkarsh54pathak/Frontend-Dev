@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard Layout</title>
+        <style>
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+
+          body {
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            grid-template-rows: 70px 1fr;
+            grid-template-areas:
+              "header header"
+              "sidebar main";
+            gap: 10px;
+            background-color: #f8f9fa;
+            padding: 10px;
+          }
+
+          header {
+            grid-area: header;
+            background-color: #0077b6;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border-radius: 8px;
+          }
+
+          aside {
+            grid-area: sidebar;
+            background-color: #023e8a;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 8px;
+          }
+
+          aside a {
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+            font-weight: bold;
+            transition: color 0.3s;
+          }
+
+          aside a:hover {
+            color: #90e0ef;
+          }
+
+          main {
+            grid-area: main;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+          }
+
+          .box {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #03045e;
+            transition: transform 0.3s, box-shadow 0.3s;
+          }
+
+          .box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+          }
+
+          .box.wide {
+            grid-column: span 2;
+          }
+
+          @media (max-width: 900px) {
+            body {
+              grid-template-columns: 1fr;
+              grid-template-rows: 70px auto auto;
+              grid-template-areas:
+                "header"
+                "sidebar"
+                "main";
+            }
+
+            main {
+              grid-template-columns: 1fr;
+            }
+
+            .box.wide {
+              grid-column: span 1;
+            }
+          }
+        </style>
+    </head>
+    <body>
+
+        <header>Dashboard Header</header>
+        
+        <aside>
+            <a href="#">Home</a>
+            <a href="#">Analytics</a>
+            <a href="#">Reports</a>
+            <a href="#">Settings</a>
+        </aside>
+      
+        <main>
+            <div class="box wide">Overview (Spans 2 Columns)</div>
+            <div class="box">Users</div>
+            <div class="box">Revenue</div>
+                <div class="box">Activity</div>
+        </main>
+      
+    </body>
+</html>

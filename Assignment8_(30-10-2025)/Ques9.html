@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Combined Effects</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background: #f3f4f6;
+                gap: 30px;
+                font-family: Arial, sans-serif;
+            }
+          
+            .btn {
+                padding: 15px 25px;
+                border-radius: 8px;
+                background: #2563eb;
+                color: white;
+                border: none;
+                cursor: pointer;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                transition: all 0.3s ease;
+            }
+          
+            .btn:hover {
+                background: #1e40af;
+                transform: scale(1.1);
+                box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            }
+          
+            .btn:active {
+                transform: scale(0.98);
+            }
+        </style>
+    </head>
+    <body>
+        <button class="btn">Hover Me</button>
+        <button class="btn">Try Me</button>
+        <button class="btn">Press Me</button>
+    </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Box Model Exploration</title>
+        <style>
+            body {
+                font-family: "Poppins", sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                min-height: 100vh;
+                background-color: #f8f9fa;
+                margin: 0;
+            }
+
+            h1 {
+                margin-bottom: 30px;
+                color: #333;
+            }
+
+            .box-container {
+              display: flex;
+              gap: 50px;
+              align-items: center;
+            }
+
+            .box {
+              background-color: #e3f2fd;
+              padding: 20px;
+              border: 5px solid #2196f3;
+              margin: 20px;
+              width: 200px;
+              text-align: center;
+              outline: 2px dashed #90caf9;
+            }
+
+            .border-box {
+                background-color: #fff3e0;
+                padding: 20px;
+                border: 5px solid #ff9800;
+                margin: 20px;
+                width: 200px;
+                box-sizing: border-box;
+                text-align: center;
+                outline: 2px dashed #ffcc80;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Box Model Exploration</h1>
+        <div class="box-container">
+            <div class="box">
+                <h3>Default Model</h3>
+                <p>Width = content only.<br>Padding and border add extra space.</p>
+            </div>
+
+            <div class="border-box">
+                <h3>Border-Box Model</h3>
+                <p>Width includes padding and border.<br>Size remains consistent.</p>
+            </div>
+        </div>
+    </body>
+</html>

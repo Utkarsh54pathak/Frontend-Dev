@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Typography</title>
+<style>
+  section {
+    text-align: center;
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 800px;
+  }
+
+  h1 {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 700px) {
+    p {
+      line-height: 1.9;
+      padding: 10px;
+    }
+  }
+</style>
+</head>
+<body>
+  <section>
+    <h1>Responsive Typography Example</h1>
+    <p>This text automatically adjusts its size and spacing depending on the screen width for better readability.</p>
+  </section>
+</body>
+</html>

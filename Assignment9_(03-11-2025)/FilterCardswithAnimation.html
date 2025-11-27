@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filter Cards with Animation</title>
+<style>
+  body { font-family: Arial; background: #fafafa; padding: 20px; }
+  .container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    animation: fadeIn 1.5s ease-in;
+  }
+
+  .card {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 250px;
+    transition: transform 0.3s ease;
+  }
+
+  .card img {
+    width: 100%;
+    border-radius: 10px;
+    filter: grayscale(100%);
+    transition: filter 0.4s ease;
+  }
+
+  .card:hover img { filter: none; }
+  .card:hover { transform: translateY(-10px); }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 800px) {
+    .container { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <img src="https://picsum.photos/id/1005/300/200" alt="">
+      <h3>Profile 1</h3>
+      <p>Web Developer</p>
+    </div>
+    <div class="card">
+      <img src="https://picsum.photos/id/1012/300/200" alt="">
+      <h3>Profile 2</h3>
+      <p>Designer</p>
+    </div>
+    <div class="card">
+      <img src="https://picsum.photos/id/1016/300/200" alt="">
+      <h3>Profile 3</h3>
+      <p>Photographer</p>
+    </div>
+  </div>
+</body>
+</html>

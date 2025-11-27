@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shadows and Depth Effect Layout</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+          
+            body {
+                font-family: "Poppins", sans-serif;
+                background: #f2f2f2;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                flex-direction: column;
+            }
+          
+            h1 {
+                margin-bottom: 40px;
+                color: #333;
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+            }
+          
+
+            .card-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                flex-wrap: wrap;
+            }
+          
+
+            .card {
+                background: white;
+                width: 280px;
+                height: 340px;
+                border-radius: 15px;
+                padding: 20px;
+                text-align: center;
+                transition: all 0.3s ease;
+            }
+          
+            .card img {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                margin-bottom: 20px;
+            }
+          
+            .card h3 {
+                margin-bottom: 10px;
+                color: #222;
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            }
+          
+            .card p {
+                color: #555;
+                font-size: 0.95rem;
+            }
+          
+            .shadow-soft {
+                box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+            }
+          
+            .shadow-medium {
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            }
+          
+            .shadow-strong {
+                box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+            }
+          
+            .card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Shadows and Depth Effect Layout</h1>
+        <div class="card-container">
+            <div class="card shadow-soft">
+                <img src="https://via.placeholder.com/100" alt="Profile 1">
+                <h3>Soft Shadow</h3>
+                <p>This card has a gentle soft shadow to create a light depth effect.</p>
+            </div>
+
+            <div class="card shadow-medium">
+                <img src="https://via.placeholder.com/100" alt="Profile 2">
+                <h3>Medium Shadow</h3>
+                <p>This card has a medium shadow for a more noticeable floating look.</p>
+            </div>
+
+            <div class="card shadow-strong">
+                <img src="https://via.placeholder.com/100" alt="Profile 3">
+                <h3>Strong Shadow</h3>
+                <p>This card has a bold shadow that gives a high contrast depth effect.</p>
+            </div>
+        </div>
+    </body>
+</html>

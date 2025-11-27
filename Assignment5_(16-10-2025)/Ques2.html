@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ques2</title>
+  <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        body {
+          font-family: "Poppins", sans-serif;
+          color: #fff;
+        }
+        header {
+          position: fixed;
+          top: 0;
+          width: 100%;
+          background-color: rgba(0, 0, 0, 0.8);
+          color: white;
+          padding: 1rem 5%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        header h1 {
+          font-size: 1.8rem;
+          font-weight: 700;
+        }
+
+        nav ul {
+          list-style: none;
+          display: flex;
+          gap: 2em;
+        }
+
+        nav a {
+          color: white;
+          text-decoration: none;
+          font-weight: 500;
+          transition: color 0.3s;
+        }
+
+        nav a:hover {
+          color: #ffcc00;
+        }
+        main {
+          margin-top: 80px;
+        }
+        .section {
+          min-height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          padding: 4rem 10%;
+          border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .content {
+          max-width: 800px;
+        }
+
+        h2 {
+          font-size: 2.5rem;
+          font-weight: 700;
+          margin-bottom: 1.5rem;
+        }
+
+        p {
+          font-size: 1.1rem;
+          line-height: 1.8;
+          font-weight: 400;
+        }
+        .bg-image {
+          background: url('https://images.unsplash.com/photo-1522098543979-ffc7f79d5c1d') no-repeat center center/cover;
+          background-attachment: fixed;
+        }
+
+        .linear-gradient {
+          background: linear-gradient(135deg, #003366, #0099cc);
+        }
+
+        .radial-gradient {
+          background: radial-gradient(circle, #ff9966, #cc3300);
+        }
+        .bg-landmarks {
+          background: url('https://images.unsplash.com/photo-1543349689-9b8c1b1e6c2b') no-repeat center center/cover;
+          background-attachment: fixed;
+        }
+
+        .light-bg {
+          background-color: #f4f4f4;
+          color: #222;
+        }
+
+        footer {
+          background-color: #000;
+          text-align: center;
+          padding: 1.2rem;
+          font-size: 1rem;
+        }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Discover Paris</h1>
+    <nav>
+      <ul>
+        <li><a href="#intro">Home</a></li>
+        <li><a href="#culture">Culture</a></li>
+        <li><a href="#food">Food</a></li>
+        <li><a href="#landmarks">Landmarks</a></li>
+        <li><a href="#travel">Travel Info</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="intro" class="section bg-image">
+      <div class="content">
+        <h2>Welcome to the City of Lights</h2>
+        <p>Paris, the capital of France, is known for its art, culture, and romance. 
+        From the Eiffel Tower to cozy cafes, every corner tells a story of history and elegance.</p>
+      </div>
+    </section>
+    <section id="culture" class="section linear-gradient">
+      <div class="content">
+        <h2>French Culture</h2>
+        <p>Paris is the cultural heart of France, home to world-famous museums like the Louvre and 
+        Musée d’Orsay. The city thrives on creativity, fashion, and a deep appreciation of the arts.</p>
+      </div>
+    </section>
+    <section id="food" class="section radial-gradient">
+      <div class="content">
+        <h2>Delicious French Cuisine</h2>
+        <p>From croissants to coq au vin, Paris offers unforgettable culinary experiences. 
+        Explore charming bakeries and Michelin-starred restaurants scattered throughout the city.</p>
+      </div>
+    </section>
+    <section id="landmarks" class="section bg-landmarks">
+      <div class="content">
+        <h2>Iconic Landmarks</h2>
+        <p>The Eiffel Tower, Notre-Dame Cathedral, and the Louvre Pyramid 
+        are just a few of the incredible sights that make Paris unique.</p>
+      </div>
+    </section>
+
+    <section id="travel" class="section light-bg">
+      <div class="content">
+        <h2>Travel Information</h2>
+        <p>Best time to visit: April to June or October to early November. 
+        Paris is well-connected through airports, metro lines, and buses.</p>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

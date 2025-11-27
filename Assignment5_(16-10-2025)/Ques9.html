@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Daily Times</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+        body {
+          font-family: "Georgia", serif;
+          background-color: #f4f1ea;
+          margin: 0;
+          padding: 0;
+        }
+
+        .newspaper {
+          max-width: 900px;
+          margin: 40px auto;
+          background-color: white;
+          padding: 2rem;
+          border-radius: 10px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        
+          column-count: 3;
+          column-gap: 2rem;
+          text-align: justify;
+        }
+        .headline {
+          column-span: all;
+          text-align: center;
+          font-size: 2rem;
+          font-weight: bold;
+          color: #222;
+          margin-bottom: 1.5rem;
+          border-bottom: 2px solid #444;
+          padding-bottom: 10px;
+        }
+
+        .news-image {
+          float: left;
+          width: 200px;
+          margin: 0 15px 15px 0;
+          border-radius: 8px;
+        }
+
+        p {
+          line-height: 1.6;
+          margin-bottom: 1rem;
+          font-size: 1rem;
+        }
+
+        @media (max-width: 800px) {
+          .newspaper {
+            column-count: 2;
+          }
+        }
+
+        @media (max-width: 500px) {
+          .newspaper {
+            column-count: 1;
+          }
+      
+          .news-image {
+            float: none;
+            display: block;
+            margin: 0 auto 1rem auto;
+          }
+        }
+
+  </style>
+</head>
+<body>
+  <main class="newspaper">
+    <h1 class="headline">The Rise of Artificial Intelligence in Everyday Life</h1>
+
+    <img src="https://via.placeholder.com/200" alt="AI concept" class="news-image" />
+
+    <p>
+      Artificial Intelligence (AI) has rapidly transitioned from a futuristic concept to an integral part of our daily lives. From smartphones that recognize our faces to recommendation systems that suggest what we watch or buy, AI has quietly revolutionized how we live and work.
+    </p>
+
+    <p>
+      One of the most visible applications of AI is in virtual assistants such as Siri, Alexa, and Google Assistant. These tools leverage natural language processing to understand human speech and respond intelligently. This development is reshaping how humans interact with technology.
+    </p>
+
+    <p>
+      In the field of healthcare, AI-driven systems are helping doctors diagnose diseases more accurately and at earlier stages. Machine learning algorithms can analyze medical images or predict potential health risks based on patient data, making treatment faster and more efficient.
+    </p>
+
+    <p>
+      However, experts emphasize the importance of ethical AI development. As algorithms become more powerful, ensuring fairness, transparency, and privacy remains a key challenge. Governments and organizations worldwide are now working to create frameworks for responsible AI use.
+    </p>
+
+    <p>
+      Looking ahead, AI is expected to enhance nearly every industry—from education to finance and beyond. While challenges remain, one thing is certain: Artificial Intelligence is not just shaping the future; it’s shaping the present.
+    </p>
+  </main>
+</body>
+</html>

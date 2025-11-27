@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Height and Width Practice Layout</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #eef2f3;
+      font-family: Arial, sans-serif;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .box1 {
+      width: 200px;
+      height: 150px;
+      background-color: #ff6b6b;
+    }
+
+    .box2 {
+      width: 40%;
+      min-height: 100px;
+      max-width: 300px;
+      background-color: #4dabf7;
+    }
+
+    .box3 {
+      width: 20em;
+      height: 30vh;
+      background-color: #51cf66;
+      overflow: auto;
+    }
+
+    .box3 p {
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Height and Width Practice Layout</h1>
+  
+  <div class="container">
+    <div class="box box1">200px × 150px</div>
+
+    <div class="box box2">40% width<br>min-height 100px<br>max-width 300px</div>
+
+    <div class="box box3">
+      <p>
+        This box uses <strong>20em width</strong> and <strong>30vh height</strong>.
+        It also has <strong>overflow: auto</strong>, so this text will scroll if
+        it becomes too long. Add more content here to test scrolling behavior.
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>
